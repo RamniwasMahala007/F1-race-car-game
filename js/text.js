@@ -7,6 +7,8 @@ console.log('gamearea');
 
 startscreen.addEventListener('click',start);
 
+let player = {};
+
 let keys = {ArrowUp : false, ArrowDown : false, ArrowLeft : false, ArrowRight : false}
 
 
@@ -29,11 +31,22 @@ function keyUp(e){
 }
 function gameplay(){
     console.log("Hey I am clicked.");
+    if(player.start){
     window.requestAnimationFrame(gameplay);
+    }
 }
 
 function start(){
+     
+    gamearea.classList.remove('hide');
+    startscreen.classList.add('hide');
+    player.start = true;
     window.requestAnimationFrame(gameplay);
+
+    let car = document.createElement('div');
+    car.setAttribute('class', 'car');
+    car.innerText = "Hey I am your car";
+    gamearea.appendChild(car)
 }
 
 
