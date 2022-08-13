@@ -56,6 +56,14 @@ function start(){
     player.start = true;
     window.requestAnimationFrame(gameplay);
 
+
+    for(x=0; x<5; x++)
+    {
+    let roadline = document.createElement('div');
+    roadline.setAttribute('class', 'lines');
+    roadline.style.top =(x*150) + "px";
+    gamearea.appendChild(roadline);
+    }
     let car = document.createElement('div');
     car.setAttribute('class', 'car');
   //  car.innerText = "Hey I am your car";
