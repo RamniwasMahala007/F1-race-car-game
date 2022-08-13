@@ -7,7 +7,7 @@ console.log('gamearea');
 
 startscreen.addEventListener('click',start);
 
-let player = {};
+let player = { speed : 5};
 
 let keys = {ArrowUp : false, ArrowDown : false, ArrowLeft : false, ArrowRight : false}
 
@@ -31,7 +31,20 @@ function keyUp(e){
 }
 function gameplay(){
     console.log("Hey I am clicked.");
+    let car = document.querySelector('.car');
+    let road = gamearea.getBoundingClientRect();
+    console.log(road);
+
     if(player.start){
+   
+        if(keys.ArrowUp && player.y>(road.top + 70)) {player.y -= player.speed}
+        if(keys.ArrowDown && player.y < (road.bottom - 70)) {player.y += player.speed}
+        if(keys.ArrowLeft && player.x>0) {player.x -= player.speed}
+        if(keys.ArrowRight && player.x<(road.width-50)) {player.x += player.speed}
+
+        car.style.top = player.y + "px";
+        car.style.left = player.x + "px";
+
     window.requestAnimationFrame(gameplay);
     }
 }
@@ -45,8 +58,14 @@ function start(){
 
     let car = document.createElement('div');
     car.setAttribute('class', 'car');
-    car.innerText = "Hey I am your car";
-    gamearea.appendChild(car)
+  //  car.innerText = "Hey I am your car";
+    gamearea.appendChild(car);
+
+    player.x = car.offsetLeft;
+    player.y = car.offsetTop;
+
+    console.log("tpo position" +car.offsetTop);
+    console.log("left position " + car.offsetLeft);
 }
 
 

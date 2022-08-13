@@ -35,4 +35,11 @@
                                           that you wish to perform an animation and requests that the browser calls a specified function to 
                                           update an animation before the next repaint.
 
+
+- 8) ***getBoundingClientRect()*** :-- The getBoundingClientRect() method returns the size of an element 
+                                       and its position relative to the viewport.
+
+                                       The getBoundingClientRect() method returns a DOMRect object with eight properties: left, top, right, bottom, x, y, width, height.
+
+
   
