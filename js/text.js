@@ -34,8 +34,8 @@ function keyUp(e){
 
         lines.forEach(function(item){
 
-            if(item.y >=700){
-                item.y -= 750;
+            if(item.y >=800){
+                item.y -= 880;
             }
 
             item.y += player.speed;
@@ -45,6 +45,26 @@ function keyUp(e){
     } 
     
 
+
+    function moveenemy(){
+
+        let enemy = document.querySelectorAll('.enemy');
+
+        enemy.forEach(function(item){
+
+            if(item.y >=550){
+                item.y = -460;
+                item.style.left = Math.floor(Math.random() * 350) + "px";
+            }
+
+            item.y += player.speed;
+            item.style.top =item.y + "px";
+        })
+        
+    } 
+    
+
+
 function gameplay(){
     console.log("Hey I am clicked.");
     let car = document.querySelector('.car');
@@ -53,6 +73,7 @@ function gameplay(){
 
     if(player.start){
 
+        moveenemy();
         movelines(); 
 
         if(keys.ArrowUp && player.y>(road.top + 70)) {player.y -= player.speed}
@@ -79,7 +100,7 @@ function start(){
     {
     let roadline = document.createElement('div');
     roadline.setAttribute('class', 'lines');
-    roadline.y = (x*150);
+    roadline.y =(x*150);
     roadline.style.top =roadline.y + "px";
     gamearea.appendChild(roadline);
     }
@@ -99,10 +120,15 @@ function start(){
     for(x=0; x<3; x++)
     {
     let enemycar = document.createElement('div');
+    
     enemycar.setAttribute('class', 'enemy');
-    enemycar.y = (x*150);
+
+    enemycar.y =  ( (x+1) * 350) * -1 ;
     enemycar.style.background = 'blue';
+
     enemycar.style.top =enemycar.y + "px";
+
+    enemycar.style.left = Math.floor(Math.random() * 350) + "px";
 
     gamearea.appendChild(enemycar);
     }
