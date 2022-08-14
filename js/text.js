@@ -2,7 +2,7 @@ const score = document.querySelector('.score');
 const startscreen = document.querySelector('.startscreen');
 const gamearea = document.querySelector('.gamearea');
 
-console.log('gamearea');
+//console.log('gamearea');
 
 
 startscreen.addEventListener('click',start);
@@ -27,6 +27,16 @@ function keyUp(e){
     //e.preventDefault();
     keys[e.key]=false;
     //console.log(e.key);
+
+
+    function iscollide(a,b){
+        arect = a.getBoundingClientRect();
+        brect = b.getBoundingClientRect();
+
+        return !((arect.bottom< brect.top) || (arect.top > brect.bottom) ||
+                (arect.right < brect.left) || (arect.left > brect.right))
+    }
+
 }
     function movelines(){
 
@@ -46,12 +56,17 @@ function keyUp(e){
     
 
 
-    function moveenemy(){
+    function moveenemy(car){
 
         let enemy = document.querySelectorAll('.enemy');
 
         enemy.forEach(function(item){
 
+           /* if(iscollide(car, item)){
+
+                console.log("boooommmm!");
+            }
+*/
             if(item.y >=550){
                 item.y = -460;
                 item.style.left = Math.floor(Math.random() * 350) + "px";
@@ -66,14 +81,15 @@ function keyUp(e){
 
 
 function gameplay(){
-    console.log("Hey I am clicked.");
+   // console.log("Hey I am clicked.");
+
     let car = document.querySelector('.car');
     let road = gamearea.getBoundingClientRect();
     console.log(road);
 
     if(player.start){
 
-        moveenemy();
+        moveenemy(car);
         movelines(); 
 
         if(keys.ArrowUp && player.y>(road.top + 70)) {player.y -= player.speed}
