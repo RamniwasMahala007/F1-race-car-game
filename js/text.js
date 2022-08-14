@@ -27,8 +27,24 @@ function keyUp(e){
     //e.preventDefault();
     keys[e.key]=false;
     //console.log(e.key);
-    
 }
+    function movelines(){
+
+        let lines = document.querySelectorAll('.lines');
+
+        lines.forEach(function(item){
+
+            if(item.y >=700){
+                item.y -= 750;
+            }
+
+            item.y += player.speed;
+            item.style.top =item.y + "px";
+        })
+        
+    } 
+    
+
 function gameplay(){
     console.log("Hey I am clicked.");
     let car = document.querySelector('.car');
@@ -36,7 +52,9 @@ function gameplay(){
     console.log(road);
 
     if(player.start){
-   
+
+        movelines(); 
+
         if(keys.ArrowUp && player.y>(road.top + 70)) {player.y -= player.speed}
         if(keys.ArrowDown && player.y < (road.bottom - 70)) {player.y += player.speed}
         if(keys.ArrowLeft && player.x>0) {player.x -= player.speed}
@@ -61,9 +79,12 @@ function start(){
     {
     let roadline = document.createElement('div');
     roadline.setAttribute('class', 'lines');
-    roadline.style.top =(x*150) + "px";
+    roadline.y = (x*150);
+    roadline.style.top =roadline.y + "px";
     gamearea.appendChild(roadline);
     }
+
+
     let car = document.createElement('div');
     car.setAttribute('class', 'car');
   //  car.innerText = "Hey I am your car";
@@ -72,8 +93,19 @@ function start(){
     player.x = car.offsetLeft;
     player.y = car.offsetTop;
 
-    console.log("tpo position" +car.offsetTop);
-    console.log("left position " + car.offsetLeft);
+    //console.log("tpo position" +car.offsetTop);
+    //console.log("left position " + car.offsetLeft);
+
+    for(x=0; x<3; x++)
+    {
+    let enemycar = document.createElement('div');
+    enemycar.setAttribute('class', 'enemy');
+    enemycar.y = (x*150);
+    enemycar.style.background = 'blue';
+    enemycar.style.top =enemycar.y + "px";
+
+    gamearea.appendChild(enemycar);
+    }
 }
 
 
