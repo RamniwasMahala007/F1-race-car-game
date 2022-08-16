@@ -57,6 +57,7 @@ function keyUp(e){
     function endgame()
     {
         player.start = false;
+        startscreen.classList.remove('hide');
     }
 
 
