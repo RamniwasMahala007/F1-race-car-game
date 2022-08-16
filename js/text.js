@@ -28,16 +28,15 @@ function keyUp(e){
     keys[e.key]=false;
     //console.log(e.key);
 
-
+}
     function iscollide(a,b){
-        arect = a.getBoundingClientRect();
-        brect = b.getBoundingClientRect();
+        aRect = a.getBoundingClientRect();
+        bRect = b.getBoundingClientRect();
 
-        return !((arect.bottom< brect.top) || (arect.top > brect.bottom) ||
-                (arect.right < brect.left) || (arect.left > brect.right))
+        return !((aRect.bottom < bRect.top) || (aRect.top > bRect.bottom) || (aRect.right < bRect.left) || (aRect.left > bRect.right))
     }
 
-}
+
     function movelines(){
 
         let lines = document.querySelectorAll('.lines');
@@ -55,6 +54,11 @@ function keyUp(e){
     } 
     
 
+    function endgame()
+    {
+        player.start = false;
+    }
+
 
     function moveenemy(car){
 
@@ -63,11 +67,12 @@ function keyUp(e){
         enemy.forEach(function(item){
 
            
-           /*if(iscollide(car, item)){
+           if(iscollide(car, item)){
 
-                console.log("boooommmm!");
+              
+                endgame(); 
             }
-*/
+
             if(item.y >=550){
                 item.y = -460;
                 item.style.left = Math.floor(Math.random() * 350) + "px";
