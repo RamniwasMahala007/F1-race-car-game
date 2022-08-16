@@ -7,7 +7,7 @@ const gamearea = document.querySelector('.gamearea');
 
 startscreen.addEventListener('click',start);
 
-let player = { speed : 5};
+let player = { speed : 5, score: 0};
 
 let keys = {ArrowUp : false, ArrowDown : false, ArrowLeft : false, ArrowRight : false}
 
@@ -62,7 +62,8 @@ function keyUp(e){
 
         enemy.forEach(function(item){
 
-           /* if(iscollide(car, item)){
+           
+           /*if(iscollide(car, item)){
 
                 console.log("boooommmm!");
             }
@@ -101,6 +102,11 @@ function gameplay(){
         car.style.left = player.x + "px";
 
     window.requestAnimationFrame(gameplay);
+    console.log(player.score++);
+
+    player.score++;
+    score.innerText = "Score:" + player.score;
+
     }
 }
 
@@ -108,7 +114,10 @@ function start(){
      
     gamearea.classList.remove('hide');
     startscreen.classList.add('hide');
+
     player.start = true;
+    player.score = 0;
+
     window.requestAnimationFrame(gameplay);
 
 
