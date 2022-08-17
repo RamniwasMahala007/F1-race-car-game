@@ -118,8 +118,13 @@ function gameplay(){
 
 function start(){
      
-    gamearea.classList.remove('hide');
+   // gamearea.classList.remove('hide');
+
     startscreen.classList.add('hide');
+
+
+    gamearea.innerHTML = "";
+
 
     player.start = true;
     player.score = 0;

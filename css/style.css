@@ -10,11 +10,11 @@
     height: 70px;
     background: red;
     position: absolute;
-    bottom: 120px;
+    bottom: 100px;
 }
 .gamearea{
     width: 400px;
-    height: 100vh;
+    height: 95vh;
     background: #2d3436;
     margin: auto;
     position: relative;
@@ -25,7 +25,7 @@
     height: 100px;
     background: whitesmoke;
     position: absolute;
-    margin-left: 195px;
+    margin-left: 200px;
 }
 .score{
     position: absolute;
@@ -62,5 +62,13 @@
     line-height: 30px;
     text-transform: uppercase;
     box-shadow: 0 5px 5px #777;
-    
+
+}
+.create{
+    position: absolute;
+    background-color: aquamarine;
+    width: 20%;
+    text-align: center;
+    text-transform: uppercase;
+    border: 1px solid #ff6b6b;
 }
