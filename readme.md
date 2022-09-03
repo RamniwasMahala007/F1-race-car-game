@@ -1,3 +1,6 @@
+# click the link below for playing game
+[Click Here](https://ramniwasmahala007.github.io/F1-race-car-game/)
+
 # F1-race-car-game
 
 ![This is an image of F1 race car](race.png)
